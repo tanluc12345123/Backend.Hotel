@@ -24,6 +24,9 @@ public class Room extends AuditModel{
     @Column(name = "content")
     private String content;
 
+    @Column(name = "service")
+    private String service = null;
+
 //    @ManyToOne(cascade = CascadeType.ALL)
 //    @JoinColumn(name = "hotel_id")
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
@@ -31,23 +34,6 @@ public class Room extends AuditModel{
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private Hotel hotel;
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinTable(name = "room_services",
-            joinColumns = {
-                    @JoinColumn(name = "room_id")
-            },
-            inverseJoinColumns = {
-                    @JoinColumn(name = "service_id")
-            })
-    private Set< Service > services = new HashSet< >();
-
-    public Set<Service> getServices() {
-        return services;
-    }
-
-    public void setServices(Set<Service> services) {
-        this.services = services;
-    }
 
     public Room(){
 
@@ -104,6 +90,14 @@ public class Room extends AuditModel{
 //    public Hotel getHotel() {
 //        return hotel;
 //    }
+
+    public String getService() {
+        return service;
+    }
+
+    public void setService(String service) {
+        this.service = service;
+    }
 
     public void setHotel(Hotel hotel) {
         this.hotel = hotel;

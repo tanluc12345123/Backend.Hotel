@@ -17,6 +17,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
+@CrossOrigin("*")
 @RequestMapping(path = "/api")
 public class RoomController {
 
@@ -63,7 +64,7 @@ public class RoomController {
                 room.setPrice(roomRequest.getPrice());
                 room.setStatus(roomRequest.isStatus());
                 room.setContent(roomRequest.getContent());
-                room.setServices(roomRequest.getServices());
+                room.setService(roomRequest.getService());
                 return roomRepository.save(room);
             }).orElseGet(()->{
                 roomRequest.setId(roomId);

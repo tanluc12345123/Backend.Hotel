@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
+@CrossOrigin("*")
 @RequestMapping(path = "/api")
 public class LocationController {
 
@@ -32,6 +33,18 @@ public class LocationController {
                 ):
                 ResponseEntity.status(HttpStatus.NOT_FOUND).body(
                         new ResponseObject("failed", "Cannot find location with id = " + id,"")
+                );
+    }
+
+    @GetMapping("/locations/keyword")
+    ResponseEntity<ResponseObject> findByKeyWord(@RequestParam(value = "location") String keyword){
+//        Optional<Location> foundLocation = locationRepository.findById(id);
+        return keyword==null ?
+                ResponseEntity.status(HttpStatus.OK).body(
+                        new ResponseObject("ok", "Query location successfully",locationRepository.findAll())
+                ):
+                ResponseEntity.status(HttpStatus.NOT_FOUND).body(
+                        new ResponseObject("ok", "Query location successfully",locationRepository.getByKeyword(keyword))
                 );
     }
 
