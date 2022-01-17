@@ -4,8 +4,12 @@ package com.tutorial.apidemo.models;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+
+
+import java.util.List;
+
+
 
 @Entity
 @Table(name = "rooms")
@@ -34,6 +38,39 @@ public class Room extends AuditModel{
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private Hotel hotel;
 
+    @OneToMany(mappedBy = "room", cascade = {
+            CascadeType.ALL
+    })
+    private List<RoomImage> roomImages = new ArrayList<>();
+
+
+    @Transient
+    private String hotel_name;
+
+    @Transient
+    private String location_name;
+
+//    @OneToMany(mappedBy = "room", cascade = {
+//            CascadeType.ALL
+//    })
+//    private List<RoomOrder> room_orders = new ArrayList<>();
+
+
+    public String getHotel_name() {
+        return hotel.getHotel_name();
+    }
+
+    public void setHotel_name(String hotel_name) {
+        this.hotel_name = hotel_name;
+    }
+
+    public String getLocation_name() {
+        return hotel.getLocation_name();
+    }
+
+    public void setLocation_name(String location_name) {
+        this.location_name = location_name;
+    }
 
     public Room(){
 
@@ -87,10 +124,6 @@ public class Room extends AuditModel{
         this.content = content;
     }
 
-//    public Hotel getHotel() {
-//        return hotel;
-//    }
-
     public String getService() {
         return service;
     }
@@ -99,7 +132,19 @@ public class Room extends AuditModel{
         this.service = service;
     }
 
+    //    public Hotel getHotel() {
+//        return hotel;
+//    }
+
     public void setHotel(Hotel hotel) {
         this.hotel = hotel;
+    }
+
+    public List<RoomImage> getRoomImages() {
+        return roomImages;
+    }
+
+    public void setRoomImages(List<RoomImage> roomImages) {
+        this.roomImages = roomImages;
     }
 }

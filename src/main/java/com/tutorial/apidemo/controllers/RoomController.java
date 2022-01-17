@@ -37,8 +37,8 @@ public class RoomController {
     ResponseEntity<ResponseObject> createRoom(@PathVariable(value = "hotelId") int hotelId, @RequestBody Room newRoom){
         Optional<Hotel> foundHotelId = hotelRepository.findById(hotelId);
         if(foundHotelId.isPresent()){
-            foundHotelId.map(location -> {
-                newRoom.setHotel(location);
+            foundHotelId.map(hotel -> {
+                newRoom.setHotel(hotel);
                 return roomRepository.save(newRoom);
             });
             return ResponseEntity.status(HttpStatus.OK).body(

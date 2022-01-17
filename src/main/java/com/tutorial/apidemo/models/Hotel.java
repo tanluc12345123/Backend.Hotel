@@ -30,6 +30,10 @@ public class Hotel extends AuditModel{
     @Column(name = "image")
     private String image;
 
+    @Transient
+    private String location_name;
+
+
 //    @ManyToOne(cascade = CascadeType.ALL)
 //    @JoinColumn(name = "location_id")
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
@@ -128,5 +132,11 @@ public class Hotel extends AuditModel{
         this.location = location;
     }
 
+    public String getLocation_name() {
+        return location.getLocation();
+    }
 
+    public void setLocation_name(String location_name) {
+        this.location_name = location_name;
+    }
 }

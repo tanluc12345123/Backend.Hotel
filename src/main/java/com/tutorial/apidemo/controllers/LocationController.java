@@ -35,7 +35,6 @@ public class LocationController {
                         new ResponseObject("failed", "Cannot find location with id = " + id,"")
                 );
     }
-
     @GetMapping("/locations/keyword")
     ResponseEntity<ResponseObject> findByKeyWord(@RequestParam(value = "location") String keyword){
 //        Optional<Location> foundLocation = locationRepository.findById(id);
@@ -55,6 +54,7 @@ public class LocationController {
             return ResponseEntity.status(HttpStatus.NOT_IMPLEMENTED).body(
                     new ResponseObject("failed","Location name already taken","")
             );
+
         }
         return ResponseEntity.status(HttpStatus.OK).body(
                 new ResponseObject("ok","Insert Location Successfully",locationRepository.save(newLocation))

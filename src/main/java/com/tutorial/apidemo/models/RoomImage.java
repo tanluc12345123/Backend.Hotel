@@ -53,4 +53,3 @@ public class RoomImage extends AuditModel{
         this.room = room;
     }
 }
-

@@ -1,10 +1,11 @@
 package com.tutorial.apidemo.controllers;
 
 
+import com.tutorial.apidemo.models.Hotel;
 import com.tutorial.apidemo.models.ResponseObject;
 import com.tutorial.apidemo.models.Room;
 import com.tutorial.apidemo.models.RoomImage;
-//import com.tutorial.apidemo.repositories.RoomImageRepository;
+import com.tutorial.apidemo.repositories.HotelRepository;
 import com.tutorial.apidemo.repositories.RoomImageRepository;
 import com.tutorial.apidemo.repositories.RoomRepository;
 import org.springframework.beans.factory.annotation.Autowired;
