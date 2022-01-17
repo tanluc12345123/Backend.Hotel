@@ -62,6 +62,7 @@ public class RoomController {
             Room updateRoom = roomRepository.findById(roomId).map(room -> {
                 room.setRoom_name(roomRequest.getRoom_name());
                 room.setPrice(roomRequest.getPrice());
+                room.setFloor(roomRequest.getFloor());
                 room.setStatus(roomRequest.isStatus());
                 room.setContent(roomRequest.getContent());
                 room.setService(roomRequest.getService());

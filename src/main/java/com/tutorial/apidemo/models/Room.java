@@ -23,6 +23,8 @@ public class Room extends AuditModel{
     private String room_name;
     @Column(name = "price")
     private float price;
+    @Column(name = "floor")
+    private String floor;
     @Column(name = "status")
     private boolean status;
     @Column(name = "content")
@@ -106,6 +108,14 @@ public class Room extends AuditModel{
 
     public void setPrice(float price) {
         this.price = price;
+    }
+
+    public String getFloor() {
+        return floor;
+    }
+
+    public void setFloor(String floor) {
+        this.floor = floor;
     }
 
     public boolean isStatus() {
